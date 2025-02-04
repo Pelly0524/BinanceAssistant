@@ -8,6 +8,19 @@ A **Line Bot** integrated with an **LLM** (Large Language Model) and **Binance**
 
 ---
 
+### Example Bot Interaction / 機器人對話示例
+
+- **Example 1: Query Real-Time Price** / **查詢即時價格**  
+  <img src="./images/example1.jpg" alt="Example 1" width="400"/>
+
+- **Example 2: Place an Order** / **下單交易**  
+  <img src="./images/example2.jpg" alt="Example 2" width="400"/>
+
+- **Example 3: Check Portfolio Holdings** / **查詢持倉**  
+  <img src="./images/example3.jpg" alt="Example 3" width="400"/>
+  
+---
+
 ## Features / 功能特色
 
 1. **Real-Time Price Checks**  **即時價格查詢**
