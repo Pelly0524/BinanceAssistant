@@ -42,6 +42,28 @@ def place_order(symbol: str, side: str, quantity: float):
         return f"Order placement failed: {str(e)}"
 
 
+def get_min_order_quantity(symbol: str) -> str:
+    """
+    Retrieve the minimum order quantity for the specified trading pair.
+    """
+    try:
+        # Get symbol information
+        exchange_info = binance_client.get_symbol_info(symbol)
+        if not exchange_info:
+            return f"The trading pair {symbol} does not exist."
+
+        # Find the LOT_SIZE filter
+        for filt in exchange_info.get("filters", []):
+            if filt["filterType"] == "LOT_SIZE":
+                min_qty = filt["minQty"]
+                return f"The minimum order quantity for {symbol} is {min_qty}."
+
+        return f"LOT_SIZE filter not found for trading pair {symbol}."
+
+    except Exception as e:
+        return f"Failed to retrieve the minimum order quantity for {symbol}: {str(e)}"
+
+
 def get_holdings():
     """
     Retrieve the current spot holdings of the account
@@ -66,7 +88,7 @@ def get_holdings():
         if not holdings:
             return "No holdings currently (balance is 0)"
 
-        return "Holdings: " + ", ".join(holdings)
+        return holdings
 
     except Exception as e:
         return f"Holdings retrieval failed: {str(e)}"
